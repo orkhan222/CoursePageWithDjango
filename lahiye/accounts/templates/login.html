@@ -1,0 +1,44 @@
+{% extends 'base/_base.html' %}
+{% load static %}
+{% block content %}
+
+    
+
+    <section class="signup pt-105 pb-120 gray-bg">
+        <div class="container">
+            <div class="col-md-8 offset-md-2">
+                <div class="signup-content">
+                    <form method="POST" role="form" id="signup-form" class="signup-form">
+                        {% csrf_token %}
+
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{message.tags}}">
+
+                            {{message}}
+                        </div>
+                        {% endfor %}
+
+                        {% endif %} 
+                        <h2 class="form-title pb-20">Create account</h2>
+                        <div class="form-group">
+                            {{form.username}}
+                        </div>
+                        <div class="form-group">
+                            {{form.password1}}
+                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" id="submit" class="main-btn register-submit" value="Sign up"/>
+                        </div>
+                    </form>
+                    <p class="loginhere">
+                        Have already an account ? <a href="{% url 'login' %}" class="loginhere-link">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+
+{% endblock %}
